@@ -14,7 +14,10 @@ module XcodeProject
 			super(root, uuid, data)
 
 			@main_group = root.object!(data['mainGroup'])
-			@product_ref_group = root.object!(data['productRefGroup'])
+			begin
+				@product_ref_group = root.object!(data['productRefGroup'])
+			rescue
+			end
 			@project_dir_path = data['projectDirPath']
 			@compatibility_version = data['compatibilityVersion']
 			@development_region = data['developmentRegion']
